@@ -47,7 +47,7 @@ app = FastAPI(title="Tech Challenge FIAP - Books API", version="1.0")
 async def metrics_middleware(request: Request, call_next):
     start_time = time.time()
     response = await call_next(request)
-    elapsed_time = (time.time() - start_time) * 1000  # em ms
+    elapsed_time = (time.time() - start_time) * 1000  
 
     logger.info({
         "endpoint": request.url.path,
