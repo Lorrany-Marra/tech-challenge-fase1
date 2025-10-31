@@ -4,6 +4,5 @@ __pycache__/
 *.pyo
 *.log
 .DS_Store
-*.csv
 logs_api.json
 Projeto.code-workspace
