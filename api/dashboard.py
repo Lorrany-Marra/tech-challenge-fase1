@@ -21,6 +21,8 @@ with open(log_path, encoding="utf-8") as f:
             pass
 df = pd.DataFrame(logs)
 
+df = df[df['endpoint'] != '/']
+
 st.title("Dashboard de Uso e Monitoramento - Books API")
 st.markdown("---")
 

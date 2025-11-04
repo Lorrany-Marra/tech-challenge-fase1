@@ -57,6 +57,7 @@ logger.addHandler(fileHandler)
 
 app = FastAPI(
     title="Tech Challenge FIAP - Books API",
+    description="API para recomendação e gerenciamento de livros",
     version="1.0",
     swagger_ui_parameters={"docExpansion": "list"}
 )
