@@ -2,11 +2,11 @@ import streamlit as st
 import json
 import os
 import pandas as pd
-import plotly.express as px
 from datetime import datetime
 
 st.set_page_config(page_title="Dashboard API Livros", layout="wide")
 
+# Logo FIAP
 img_path = os.path.join(os.path.dirname(__file__), 'logo-fiap.png')
 if os.path.exists(img_path):
     try:
@@ -16,8 +16,10 @@ if os.path.exists(img_path):
 else:
     st.sidebar.write("**FIAP - Tech Challenge**")
 
+# Caminho do arquivo de logs
 log_path = os.path.join(os.path.dirname(__file__), '..', 'logs_api.json')
 
+# Carregamento de logs
 logs = []
 if os.path.exists(log_path):
     try:
@@ -32,18 +34,28 @@ if os.path.exists(log_path):
     except Exception as e:
         st.error(f"Erro ao carregar logs: {e}")
 
+# Para execução se não houver logs
 if not logs:
     st.warning("Nenhum log disponível. Faça algumas requisições à API primeiro!")
     st.stop()
 
+# Cria DataFrame
 df = pd.DataFrame(logs)
 
+# Remove endpoint raiz
 if 'endpoint' in df.columns:
     df = df[df['endpoint'] != '/']
 
+# Para se ficou vazio após filtro
+if len(df) == 0:
+    st.warning("Nenhum log válido. Aguardando requisições...")
+    st.stop()
+
+# === INTERFACE ===
 st.title("Dashboard de Uso e Monitoramento - Books API")
 st.markdown("---")
 
+# Métricas
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Total de Requisições", len(df))
 
@@ -56,9 +68,10 @@ else:
     error_rate = 0
 col3.metric("Taxa de Erro (%)", error_rate)
 
-unique_endpoints = df["endpoint"].nunique() if 'endpoint' in df.columns else 0
+unique_endpoints = df["endpoint"].nunique() if 'endpoint' in df.columns and len(df) > 0 else 0
 col4.metric("Endpoints Únicos", unique_endpoints)
 
+# Gráficos
 if 'endpoint' in df.columns and len(df) > 0:
     st.markdown("### Endpoints mais acessados")
     st.bar_chart(df["endpoint"].value_counts())
@@ -75,8 +88,8 @@ if 'response_time_ms' in df.columns and len(df) > 0:
     st.markdown("### Linha do tempo dos tempos de resposta das requisições")
     st.line_chart(df["response_time_ms"])
 
+# Tabela
 if len(df) > 0:
     st.markdown("### Últimas 10 requisições")
     colunas_exibir = [c for c in df.columns if c != "message"]
     st.dataframe(df[colunas_exibir].tail(10), use_container_width=True, hide_index=True)
-
