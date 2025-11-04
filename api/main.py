@@ -10,12 +10,26 @@ import time
 from datetime import datetime, timedelta
 from collections import Counter
 from fastapi import FastAPI, HTTPException, Query, Depends, Request, Path, Form, Header, Response
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm, HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import RedirectResponse
 from typing import List, Optional
 from jose import jwt, JWTError
 from pydantic import BaseModel
 from unidecode import unidecode
 from pythonjsonlogger import jsonlogger 
+
+def processar_preco_csv(preco_str):
+    """
+    Processa preço do CSV.
+    """
+    try:
+        preco_str = str(preco_str).strip()
+        preco_limpo = ''.join(c for c in preco_str if c.isdigit())
+        if not preco_limpo:
+            return 0.0
+        return float(preco_limpo) / 100
+    except (ValueError, AttributeError):
+        return 0.0
 
 
 class LivroFeatures(BaseModel):
@@ -41,7 +55,31 @@ fileHandler.setFormatter(formatter)
 logger.addHandler(fileHandler)
 
 
-app = FastAPI(title="Tech Challenge FIAP - Books API", version="1.0")
+app = FastAPI(
+    title="Tech Challenge FIAP - Books API",
+    version="1.0",
+    swagger_ui_parameters={"docExpansion": "list"}
+)
+
+security = HTTPBearer()
+
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise HTTPException(status_code=401, detail="Token inválido")
+        return username
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Token inválido ou expirado")
+
+@app.get("/", include_in_schema=False)
+def root():
+    """
+    Redireciona automaticamente para a documentação Swagger
+    """
+    return RedirectResponse(url="/docs")
 
 @app.middleware("http")
 async def metrics_middleware(request: Request, call_next):
@@ -98,44 +136,39 @@ def login(
 @app.post(
     "/api/v1/auth/refresh",
     summary="Renovar token JWT",
-    description="Renova o token JWT de acesso utilizando o token anterior válido."
+    description="Renova o token JWT de acesso utilizando o token anterior válido.",
+    responses={
+        200: {"description": "Token renovado com sucesso"},
+        401: {"description": "Token inválido ou expirado"}
+    }
 )
 def refresh_token(
-    token: str = Depends(oauth2_scheme),
+    current_user: str = Depends(get_current_user),
     request: Request = None
 ):
     """
     Renova o token JWT de acesso utilizando o token anterior válido.
     """
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username = payload.get("sub")
-        if username is None:
-            raise HTTPException(status_code=401, detail="Token inválido")
-        novo_token = criar_token_acesso({"sub": username})
-        return {"access_token": novo_token, "token_type": "bearer"}
-    except JWTError:
-        raise HTTPException(status_code=401, detail="Token inválido ou expirado")
+    novo_token = criar_token_acesso({"sub": current_user})
+    return {"access_token": novo_token, "token_type": "bearer"}
 
 @app.post(
     "/api/v1/scraping/trigger",
     summary="Disparar scraping manualmente (apenas admin)",
-    description="Dispara manualmente a rotina de scraping de livros (apenas para usuário admin)."
+    description="Dispara manualmente a rota de scraping de livros (apenas para usuário admin).",
+    responses={
+        200: {"description": "Scraping disparado com sucesso"},
+        401: {"description": "Token inválido ou expirado"},
+        403: {"description": "Sem permissão (apenas admin)"}
+    }
 )
 def trigger_scraping(
-    token: str = Depends(oauth2_scheme),
+    current_user: str = Depends(get_current_user),
     request: Request = None
 ):
-    logger.info(f"POST /api/v1/scraping/trigger chamado por IP: {request.client.host if request else 'indefinido'}")
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username = payload.get("sub")
-        if username != "admin":
-            raise HTTPException(status_code=403, detail="Sem permissão")
-        # resultado = rodar_scraping()
-        return {"status": "Scraping de livros disparado!"}
-    except JWTError:
-        raise HTTPException(status_code=401, detail="Token inválido ou expirado")
+    if current_user != "admin":
+        raise HTTPException(status_code=403, detail="Sem permissão")
+    return {"status": "Scraping de livros disparado!"}
 
 CSV_PATH = os.path.join(os.path.dirname(__file__), '../data/livros_completo.csv')
 
@@ -276,7 +309,7 @@ def stats_overview(request: Request):
     logger.info(f"GET /api/v1/stats/overview chamado por IP: {request.client.host}")
     livros = carregar_livros()
     total = len(livros)
-    precos = [float(livro.get("Preço", "0")) for livro in livros if livro.get("Preço", "").replace('.', '', 1).isdigit()]
+    precos = [processar_preco_csv(livro.get("Preço", "0")) for livro in livros if livro.get("Preço")]
     ratings = [livro.get("Rating", "Unknown") for livro in livros]
     media_preco = round(sum(precos) / len(precos), 2) if precos else 0
     dist_ratings = dict(Counter(ratings))
@@ -306,7 +339,7 @@ def stats_categorias(request: Request):
         for k in livro.keys():
             if k.strip().lower().replace("ã", "a") == "categoria":
                 cat = livro[k]
-        preco = float(livro.get("Preço", "0")) if livro.get("Preço", "").replace('.', '', 1).isdigit() else 0
+        preco = processar_preco_csv(livro.get("Preço", "0"))
         if not cat:
             continue
         if cat not in stats:
@@ -373,19 +406,14 @@ def livros_por_faixa_de_preco(
     logger.info(f"GET /api/v1/books/price-range chamado por IP: {request.client.host if request else 'indefinido'}")
     livros = carregar_livros()
     resultado = []
+    
     for livro in livros:
-        preco_txt = livro.get("Preço", "0").replace(",", ".")
-        try:
-            preco = float(preco_txt) / 100
-            if min <= preco <= max:
-                resultado.append(livro)
-        except:
-            continue
+        preco = processar_preco_csv(livro.get("Preço", "0"))  # ← APENAS ESTA LINHA!
+        if min <= preco <= max:
+            resultado.append(livro)
+    
     if not resultado:
-        raise HTTPException(
-            status_code=404,
-            detail="Nenhum livro encontrado nesta faixa de preço."
-        )
+        raise HTTPException(status_code=404, detail="Nenhum livro encontrado nesta faixa de preço.")
     return resultado
 
 @app.get(
@@ -402,13 +430,13 @@ def ml_features(request: Request):
     """
     logger.info(f"GET /api/v1/ml/features chamado por IP: {request.client.host}")
     livros = carregar_livros()
-    print(livros[0].keys())
     features = []
+
     for livro in livros:
         features.append({
             "titulo": livro.get("Título"),
             "categoria": livro.get("Categoria"),
-            "preco": float(livro.get("Preço", 0)),
+            "preco": processar_preco_csv(livro.get("Preço", 0)), 
             "rating": livro.get("Rating"),
             "disponibilidade": livro.get("Disponibilidade")
         })
