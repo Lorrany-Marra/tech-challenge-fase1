@@ -1,0 +1,117 @@
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 6.02}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.66}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 44.45}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 75.19}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.61}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.33}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 31.33}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.44}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.63}
+{"message": "GET /api/v1/books chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 86.22}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 2.66}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.24}
+{"message": "GET /api/v1/books/7 chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/7", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 19.33}
+{"message": "GET /api/v1/books/search chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/search", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 44.88}
+{"message": "GET /api/v1/books/search chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/search", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 26.79}
+{"message": "GET /api/v1/categories chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/categories", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 16.96}
+{"message": "GET /api/v1/health chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/health", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 13.06}
+{"message": "GET /api/v1/stats/overview chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/stats/overview", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 14.76}
+{"message": "GET /api/v1/stats/categories chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/stats/categories", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 20.1}
+{"message": "GET /api/v1/books/top-rated chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/top-rated", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 33.48}
+{"message": "GET /api/v1/books/price-range chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/price-range", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 63.6}
+{"message": "GET /api/v1/ml/features chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/ml/features", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 85.03}
+{"message": "GET /api/v1/ml/training-data chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/ml/training-data", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 53.15}
+{"message": "POST /api/v1/ml/predictions chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/ml/predictions", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 4.05}
+{"message": "GET /api/v1/stats/categories chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/stats/categories", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 56.09}
+{"message": "GET /api/v1/categories chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/categories", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 10.97}
+{"message": "GET /api/v1/books/search chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books/search", "method": "GET", "ip": "127.0.0.1", "status_code": 404, "response_time_ms": 22.97}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.67}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 3.88}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.27}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 33.57}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 21.57}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 1.99}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 2.63}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 1.92}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.66}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 27.44}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.58}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.72}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 38.77}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.63}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.91}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.67}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 30.73}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.6}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.46}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 130.32}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.75}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.8}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.59}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 401, "response_time_ms": 0.68}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 2.08}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.61}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 37.69}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 18.74}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 2.66}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.55}
+{"message": "GET /api/v1/books chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 252.66}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 2.74}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.55}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 34.38}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.71}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.6}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 17.67}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 403, "response_time_ms": 0.6}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 2.54}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 2.25}
+{"message": "GET /api/v1/books chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 51.88}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.67}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.86}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.6}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 2.27}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.31}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.64}
+{"message": "GET /api/v1/books chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/books", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 42.74}
+{"message": "POST /api/v1/auth/login chamado por IP: 127.0.0.1"}
+{"message": "", "endpoint": "/api/v1/auth/login", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 27.13}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 403, "response_time_ms": 0.57}
+{"message": "", "endpoint": "/api/v1/auth/refresh", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.93}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 4.03}
+{"message": "", "endpoint": "/api/v1/scraping/trigger", "method": "POST", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 1.5}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.48}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 31.26}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.28}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.56}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 2.12}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 36.45}
+{"message": "", "endpoint": "/", "method": "GET", "ip": "127.0.0.1", "status_code": 307, "response_time_ms": 24.72}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.69}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 28.38}
+{"message": "", "endpoint": "/docs", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 0.6}
+{"message": "", "endpoint": "/openapi.json", "method": "GET", "ip": "127.0.0.1", "status_code": 200, "response_time_ms": 37.29}
