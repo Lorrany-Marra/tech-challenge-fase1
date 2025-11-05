@@ -239,7 +239,7 @@ Authorization: Bearer <coloque_o_token_aqui>
 
 ### **API (Render)**
 
- **URL:** `https://tech-challenge-fiap-api.onrender.com`
+ **URL:** `https://tech-challenge-fiap-api.onrender.com](https://tech-challenge-fase1-3p5d.onrender.com`
 
 **Configuração:**
 - **Runtime:** Python 3.12
