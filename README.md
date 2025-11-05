@@ -294,9 +294,8 @@ Este projeto foi desenvolvido para fins acadêmicos como parte do **Tech Challen
 
 ##  Vídeo de Apresentação
 
-🔗 **Link do vídeo:** [Inserir link do YouTube/Loom aqui]
-
-**Duração:** ~10 minutos  
+ **Link do vídeo:** (https://youtube.com/watch?v=wS_obu3BRGo&feature=shared)
+ 
 **Conteúdo:**
 - Demonstração da API funcionando
 - Testes de endpoints no Swagger
